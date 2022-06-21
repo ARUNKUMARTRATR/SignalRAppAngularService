@@ -1,23 +1,38 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.IO;
-
-namespace SignalRAppAngular.Controllers
+﻿namespace SignalRAppAngular.Controllers
 {
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Configuration;
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+
+    /// <summary>
+    /// Defines the <see cref="FileUploadController" />.
+    /// </summary>
     [ApiController]
     [Route("[controller]")]
     public class FileUploadController : Controller
     {
-
-        public FileUploadController( IConfiguration configuration)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FileUploadController"/> class.
+        /// </summary>
+        /// <param name="configuration">The configuration<see cref="IConfiguration"/>.</param>
+        public FileUploadController(IConfiguration configuration)
         {
             Configuration = configuration;
         }
+
+        /// <summary>
+        /// Gets the Configuration.
+        /// </summary>
         public IConfiguration Configuration { get; }
 
+        /// <summary>
+        /// The UploadFile.
+        /// </summary>
+        /// <param name="filesList">The filesList<see cref="List{IFormFile}"/>.</param>
+        /// <returns>The <see cref="List{string}"/>.</returns>
         [HttpPost]
         [Route("upload")]
         public List<string> UploadFile(List<IFormFile> filesList)
@@ -60,6 +75,5 @@ namespace SignalRAppAngular.Controllers
             }
             return pathArray;
         }
-
     }
 }
