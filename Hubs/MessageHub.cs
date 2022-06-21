@@ -1,11 +1,8 @@
 ﻿namespace SignalRAppAngular.Hubs
 {
     using Microsoft.AspNetCore.SignalR;
-    using Newtonsoft.Json.Linq;
     using SignalRAppAngular.Dtos;
-    using SignalRAppAngular.Model;
     using System;
-    using System.Text.Json;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -28,12 +25,21 @@
         /// </summary>
         /// <param name="message">The message<see cref="string"/>.</param>
         /// <returns>The <see cref="Task"/>.</returns>
-        public async Task SendToCallerAsync(string message)
+        public async Task SendToCallerAsync(ChatbotMessageReceiverDto message)
         {
-            var type = message.GetType();
-            ChatbotMessageReceiver values = new ChatbotMessageReceiver();
-            values = JsonSerializer.Deserialize<ChatbotMessageReceiver>(message);
-            await Clients.Caller.SendAsync("RecieveMsg", "ads");
+            var data = new ChatbotMessageReceiverDto
+            {
+                Message = "sucess",
+                MessageUserType = 0,
+                MessageType = 0,
+                AnswerType = "file",
+                IsAnswer = false,
+                DateTime = DateTime.Now,
+                ConnectionId = Context.ConnectionId,
+                QuestionId = 1,
+                IsAuto = false
+            };
+            await Clients.Caller.SendAsync("RecieveMsg", data);
         }
 
         /// <summary>

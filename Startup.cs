@@ -2,9 +2,11 @@ namespace SignalRAppAngular
 {
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.FileProviders;
     using Microsoft.Extensions.Hosting;
     using SignalRAppAngular.Data;
     using SignalRAppAngular.Hubs;
@@ -86,6 +88,14 @@ namespace SignalRAppAngular
             {
                 endpoints.MapControllers();
                 endpoints.MapHub<MessageHub>("/hub");
+            });
+
+            var fileRootPath = this.Configuration.GetValue<string>("ROOT_PATH");
+            app.UseFileServer(new FileServerOptions
+            {
+                FileProvider = new PhysicalFileProvider(fileRootPath),
+                RequestPath = new PathString(""),
+                EnableDirectoryBrowsing = false,
             });
 
         }
