@@ -1,7 +1,6 @@
 ﻿namespace SignalRAppAngular.Hubs
 {
     using Microsoft.AspNetCore.SignalR;
-    using Newtonsoft.Json.Linq;
     using SignalRAppAngular.Data;
     using SignalRAppAngular.Dtos;
     using SignalRAppAngular.Model;
@@ -36,7 +35,7 @@
         /// </summary>
         /// <param name="message">The message<see cref="string"/>.</param>
         /// <returns>The <see cref="Task"/>.</returns>
-        public async Task SendToCallerAsync(ChatbotMessageReceiver message)
+        public async Task SendToCallerAsync(ChatbotMessageReceiverDto message)
         {
             ChatBotConversation userIdentifier = new ChatBotConversation();
             //ChatBotConversationDetail conDetails = new ChatBotConversationDetail();
@@ -77,7 +76,7 @@
 
             List<ChatBotCollectQuestion> chatbotQuestion = new List<ChatBotCollectQuestion>();
             chatbotQuestion = _dbContext.ChatBotCollectQuestionInfo.Where(x => x.BotId == 1).ToList();
-            ChatbotMessageReceiver returnMessage = new ChatbotMessageReceiver();
+            ChatbotMessageReceiverDto returnMessage = new ChatbotMessageReceiverDto();
             if (message.QuestionId == null || message.QuestionId == 0)
             {
                 returnMessage.AnswerType = chatbotQuestion.FirstOrDefault(x => x.ParentQuestionId == 0).QuestionType;
