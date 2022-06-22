@@ -37,41 +37,18 @@
         /// Gets or sets the DateTime.
         /// </summary>
         public DateTime DateTime { get; set; }
-
-        /// <summary>
-        /// Gets or sets the OptionData.
-        /// </summary>
         public List<Options> OptionData { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether IsAnswer.
-        /// </summary>
         public bool IsAnswer { get; set; }
 
         /// <summary>
         /// Gets or sets the IsAuto.
         /// </summary>
         public bool? IsAuto { get; set; }
-
-        /// <summary>
-        /// Gets or sets the QuestionId.
-        /// </summary>
-        public int? QuestionId { get; set; }
+        public long? QuestionId { get; set; }
     }
-
-    /// <summary>
-    /// Defines the <see cref="Options" />.
-    /// </summary>
     public class Options
     {
-        /// <summary>
-        /// Gets or sets the Id.
-        /// </summary>
         public int Id { get; set; }
-
-        /// <summary>
-        /// Gets or sets the ItemName.
-        /// </summary>
-        public string ItemName { get; set; }
+        public int ItemName { get; set; }
     }
 }
