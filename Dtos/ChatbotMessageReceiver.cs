@@ -13,8 +13,14 @@ namespace SignalRAppAngular.Dtos
         public string AnswerType { get; set; }
         public string Message { get; set; }
         public DateTime DateTime { get; set; }
+        public List<Options> OptionData { get; set; }
         public bool IsAnswer { get; set; }
         public bool? IsAuto { get; set; }
-        public int QuestionId { get; set; }
+        public long? QuestionId { get; set; }
+    }
+    public class Options
+    {
+        public int Id { get; set; }
+        public int ItemName { get; set; }
     }
 }
