@@ -170,7 +170,7 @@
         private string getClaimExistsStatus(string insuredName, string phoneNumber)
         {
             HttpClient httpClient = new HttpClient();
-            var urlString = "http://localhost:49414/ChatBot/checkPhoneAndInsuredName?insuredName=" + insuredName + "&phoneNumber=" + phoneNumber;
+            var urlString = "https://measuringapp.experionglobal.dev/ChatBot/checkPhoneAndInsuredName?insuredName=" + insuredName + "&phoneNumber=" + phoneNumber;
             Uri u = new Uri(urlString);
             HttpRequestMessage request = new HttpRequestMessage
             {
