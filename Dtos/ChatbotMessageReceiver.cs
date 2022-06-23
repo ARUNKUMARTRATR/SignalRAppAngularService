@@ -57,6 +57,8 @@
         /// Gets or sets the QuestionId.
         /// </summary>
         public long? QuestionId { get; set; }
+
+        public string UserData { get; set; }
     }
 
     /// <summary>
@@ -68,10 +70,6 @@
         /// Gets or sets the Id.
         /// </summary>
         public int Id { get; set; }
-
-        /// <summary>
-        /// Gets or sets the ItemName.
-        /// </summary>
-        public int ItemName { get; set; }
+        public string ItemName { get; set; }
     }
 }
